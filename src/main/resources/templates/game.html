@@ -5,6 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-Bonjour comment allez vous  {{ nom1 }} et comment allez vous {{ nom2   }} ?
+Bonjour comment allez vous  {{ game.nom1 }} et comment allez vous {{ game.nom2   }} ?
+
+    <table>
+    {{#game.tabJeu}} <!--tableau sur lequel va être effectué l'itération :# définit le début du bloc à itérer}}-->
+        <tr>
+            <!-- {{.}} représente l'élément du tableau ou de la liste actuellement scanné-->
+
+            {{#.}} // <!--similaire à game.tabJeu[i] dans GameModel (itération sur la première dimension du tableau. #: début du bloc-->
+             <td>
+                 {{.}} <!-- similaire à game.tabJeu[i][j] dans GameModel (itération sur la seconde dimension : -->
+             </td>
+            {{/.}}  <!--fin du bloc deuxième dimension -->
+        </tr>
+    {{/game.tabJeu}} <!--fin du bloc première dimension-->
+    </table>
 </body>
 </html>

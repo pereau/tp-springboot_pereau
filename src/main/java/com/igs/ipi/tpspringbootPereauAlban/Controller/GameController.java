@@ -12,12 +12,18 @@ public class GameController {
 
     @RequestMapping("/game/new")
     public ModelAndView newGame(){
+
         ModelAndView mav = new ModelAndView("game"); //Instanciation d'un objet de type ModelAndView qui s'affiche dans game (.html)
 
         GameService gameService = new GameService();
 
-        mav.addObject("nom1", gameService.newGame().getNom1());
-        mav.addObject("nom2", gameService.newGame().getNom2());
+        GameModel gameModel = gameService.newGame();
+
+        mav.addObject("nom1", gameModel.getNom1());
+        mav.addObject("nom2", gameModel.getNom2());
+
+        mav.addObject("game", gameModel);
+
 
 
         return mav;

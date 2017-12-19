@@ -6,6 +6,28 @@ public class GameModel {
     private String nom1;
     private String nom2;
 
+    private static final int LARGEUR = 7;
+    private static final int HAUTEUR = 6;
+
+    // création d'un tableau de dimension 7*6
+
+    private String[][] tabJeu;
+
+    {
+        tabJeu = new String[HAUTEUR][LARGEUR];
+
+    }
+
+
+
+    public GameModel() {
+        for (int i=0 ; i<tabJeu.length ;i++) {
+            for (int j = 0; j < tabJeu[i].length; j++) {
+                tabJeu[i][j] = "vide";
+            }
+        }
+    }
+
     public String getNom1() {
         return nom1;
     }
