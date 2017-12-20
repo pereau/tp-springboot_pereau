@@ -32,8 +32,9 @@ public class GameController {
 
         GameModel gameModel = gameService.newGame();
 
-        mav.addObject("nom1", gameModel.getNom1());
-        mav.addObject("nom2", gameModel.getNom2());
+        partieEnCours.setGameModel(gameModel);
+
+
 
         mav.addObject("game", gameModel);
 
