@@ -6,6 +6,8 @@ public class GameModel {
     private String nom1;
     private String nom2;
 
+
+
     private static final int LARGEUR = 7;
     private static final int HAUTEUR = 6;
 
@@ -20,16 +22,28 @@ public class GameModel {
 
 
 
-    public GameModel() {
+    public GameModel() { //Le tableau tabJeu est créé en même temps que l'instance de GameModel
         for (int i=0 ; i<tabJeu.length ;i++) {
             for (int j = 0; j < tabJeu[i].length; j++) {
                 tabJeu[i][j] = "vide";
+
             }
         }
     }
 
     public void ajoutJeton(int colonne){
-        this.tabJeu[0][0]="rempli";
+
+
+        int i=1;
+        while (this.tabJeu[i][colonne]=="vide") {
+            if (this.tabJeu[i][colonne] == "rempli"){
+
+                this.tabJeu[i-1][colonne]="rempli";
+
+            }
+
+            i+=1;
+        }
     }
 
     public String getNom1() {
@@ -47,4 +61,6 @@ public class GameModel {
     public void setNom2(String nom2) {
         this.nom2 = nom2;
     }
+
+
 }

@@ -64,12 +64,12 @@ public class GameController {
         return mav;
     }
 
-    @GetMapping("game/drop")
-    public ModelAndView dropJeton() {
+    @GetMapping("game/drop/{i}")
+    public ModelAndView dropJeton(@PathVariable("i") int col) {
         GameModel gameModel =this.partieEnCours.getGameModel();
-        int i=1;
 
-        gameModel.ajoutJeton(i);
+
+        gameModel.ajoutJeton(col);
 
         ModelAndView mav =new ModelAndView("game");
         mav.addObject("game",gameModel);
