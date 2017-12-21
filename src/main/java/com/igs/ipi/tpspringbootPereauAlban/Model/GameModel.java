@@ -28,6 +28,10 @@ public class GameModel {
         }
     }
 
+    public void ajoutJeton(int colonne){
+        this.tabJeu[0][0]="rempli";
+    }
+
     public String getNom1() {
         return nom1;
     }

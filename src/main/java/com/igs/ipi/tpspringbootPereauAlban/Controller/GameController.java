@@ -6,6 +6,8 @@ import com.igs.ipi.tpspringbootPereauAlban.Service.PartieEnCours;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,6 +60,19 @@ public class GameController {
         mav.addObject("game", gameModel);
 
 
+
+        return mav;
+    }
+
+    @GetMapping("game/drop")
+    public ModelAndView dropJeton() {
+        GameModel gameModel =this.partieEnCours.getGameModel();
+        int i=1;
+
+        gameModel.ajoutJeton(i);
+
+        ModelAndView mav =new ModelAndView("game");
+        mav.addObject("game",gameModel);
 
         return mav;
     }
