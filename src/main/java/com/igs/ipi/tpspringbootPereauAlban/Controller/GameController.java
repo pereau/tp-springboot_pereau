@@ -32,6 +32,7 @@ public class GameController {
 
         GameModel gameModel = gameService.newGame();
 
+        // initialisation de partieEnCours : initialement, partieEnCours est identique à gameModel de newGame
         partieEnCours.setGameModel(gameModel);
 
 
@@ -45,7 +46,7 @@ public class GameController {
 
 
     @RequestMapping("/game")
-    public ModelAndView partieEnCOurs(){
+    public ModelAndView partieEnCours(){
 
         ModelAndView mav = new ModelAndView("game"); //Instanciation d'un objet de type ModelAndView qui s'affiche dans game (.html)
 
