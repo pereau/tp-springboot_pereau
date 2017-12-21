@@ -66,7 +66,7 @@ public class GameController {
 
     @GetMapping("game/drop/{i}")
     public ModelAndView dropJeton(@PathVariable("i") int col) {
-        GameModel gameModel =this.partieEnCours.getGameModel();
+        GameModel gameModel =this.partieEnCours.getGameModel(); //on récupère l'état actuel du jeu représenté par partieEnCours
 
 
         gameModel.ajoutJeton(col);

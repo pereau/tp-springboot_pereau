@@ -31,14 +31,22 @@ public class GameModel {
         }
     }
 
-    public void ajoutJeton(int colonne){
+    public void ajoutJeton(int colonne){// entier de 1 à 7 tandis que l'indice des colonnes va de 0 à 6
 
 
-        int i=1;
-        while (this.tabJeu[i][colonne]=="vide") {
-            if (this.tabJeu[i][colonne] == "rempli"){
+        int i=0;
+        while (this.tabJeu[i][colonne - 1].equals("vide") && (i < 6)) {
 
-                this.tabJeu[i-1][colonne]="rempli";
+
+           if (this.tabJeu[i+1][colonne-1].equals("rempli") ){
+
+                this.tabJeu[i][colonne-1]="rempli";
+
+            }
+
+           if (this.tabJeu[i+1][colonne-1].equals("vide") && i==4 ){
+
+                this.tabJeu[i+1][colonne-1]="rempli";
 
             }
 
