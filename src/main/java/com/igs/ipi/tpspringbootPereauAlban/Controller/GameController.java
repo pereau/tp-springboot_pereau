@@ -18,6 +18,10 @@ public class GameController {
     private GameService gameService = new GameService();
     private PartieEnCours partieEnCours = new PartieEnCours();
 
+
+
+
+
     public GameController(GameService gameService, PartieEnCours partieEnCours) {
         this.gameService = gameService;
         this.partieEnCours = partieEnCours;
@@ -26,22 +30,18 @@ public class GameController {
     @RequestMapping("/game/new")
     public ModelAndView newGame(){
 
-
-
         ModelAndView mav = new ModelAndView("game"); //Instanciation d'un objet de type ModelAndView qui s'affiche dans game (.html)
 
-
-
         GameModel gameModel = gameService.newGame();
+
+        String player = gameModel.getNom2();
+
+        gameModel.setJoueurActuel(player);
 
         // initialisation de partieEnCours : initialement, partieEnCours est identique à gameModel de newGame
         partieEnCours.setGameModel(gameModel);
 
-
-
         mav.addObject("game", gameModel);
-
-
 
         return mav;
     }
@@ -52,31 +52,32 @@ public class GameController {
 
         ModelAndView mav = new ModelAndView("game"); //Instanciation d'un objet de type ModelAndView qui s'affiche dans game (.html)
 
-
-
         GameModel gameModel = this.partieEnCours.getGameModel();
 
-
         mav.addObject("game", gameModel);
-
-
 
         return mav;
     }
 
     @GetMapping("game/drop/{i}")
     public ModelAndView dropJeton(@PathVariable("i") int col) {
+
+
         GameModel gameModel =this.partieEnCours.getGameModel(); //on récupère l'état actuel du jeu représenté par partieEnCours
 
 
         gameModel.ajoutJeton(col);
 
+        gameModel.tourSuivant();
+        this.partieEnCours.setGameModel(gameModel);
+
         ModelAndView mav =new ModelAndView("game");
         mav.addObject("game",gameModel);
+
+
 
         return mav;
     }
 
 
 }
-

@@ -17,6 +17,7 @@ public class GameService {
         gameModel.setNom1("joueur1");
         gameModel.setNom2("joueur2");
 
+
         return gameModel;
 
     }
