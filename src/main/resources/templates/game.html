@@ -6,23 +6,28 @@
 </head>
 <body>
 
-C'est au tour de {{ game.joueurActuel }} de jouer
+C'est au tour de {{ game.joueurActuel }} de jouer <br><br>
 
-    <table>
+    <table border="3">
     {{#game.tabJeu}} <!--tableau sur lequel va être effectué l'itération :# définit le début du bloc à itérer}}-->
-        <tr>
+        <tr border="2">
             <!-- {{.}} représente l'élément du tableau ou de la liste actuellement scanné-->
            <!-- <a href="/game/drop/{{-index}}">test</a> : test de récupération des lignes pour comprendre le fonctionnement de {{-index}}-->
 
             {{#.}} // <!--similaire à game.tabJeu[i] dans GameModel (itération sur la première dimension du tableau. #: début du bloc-->
-             <td>
+             <td border="2" style="width:100px; height: 100px">
                  <a href="/game/drop/{{-index}}"> <!-- {{-index}} est un mot clef et non une variable arbitraire. permet de récupérer l'indice de l'élément actuel: cet indice correspond ici à 'j', indice qui représente ici la colonne -->
-                        {{.}} <!-- similaire à game.tabJeu[i][j] dans GameModel (itération sur la seconde dimension : -->
+                       <!-- {{.}} <!-- similaire à game.tabJeu[i][j] dans GameModel (itération sur la seconde dimension : -->
+                     <img src="http://localhost:8080/{{.}}.jpg" width="100px" heigth="100px" />
                  </a>
              </td>
             {{/.}}  <!--fin du bloc deuxième dimension -->
         </tr>
     {{/game.tabJeu}} <!--fin du bloc première dimension-->
     </table>
+Joueur gagnant : {{game.gagnant}}<br><br>
+
+<a href="/game/new">Commencer une nouvelle partie</a>
+
 </body>
 </html>
