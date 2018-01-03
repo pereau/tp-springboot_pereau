@@ -1,6 +1,9 @@
 package com.igs.ipi.tpspringbootPereauAlban.Service;
 
 import com.igs.ipi.tpspringbootPereauAlban.Model.GameModel;
+import com.igs.ipi.tpspringbootPereauAlban.Repository.GameRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -14,6 +17,10 @@ public class PartieEnCours {
 
 
     private GameModel gameModel;
+    
+    
+    
+   
 
 
 
@@ -25,6 +32,8 @@ public class PartieEnCours {
         this.gameModel = gameModel;
 
     }
+    
+    
 
 
 

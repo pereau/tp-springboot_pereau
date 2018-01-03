@@ -1,8 +1,11 @@
 package com.igs.ipi.tpspringbootPereauAlban.Controller;
 
 import com.igs.ipi.tpspringbootPereauAlban.Model.GameModel;
+import com.igs.ipi.tpspringbootPereauAlban.Repository.GameRepository;
 import com.igs.ipi.tpspringbootPereauAlban.Service.GameService;
 import com.igs.ipi.tpspringbootPereauAlban.Service.PartieEnCours;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,10 @@ public class GameController {
 
     private GameService gameService = new GameService();
     private PartieEnCours partieEnCours = new PartieEnCours();
+    
+    @Autowired
+    private GameRepository gameRepository;
+    
 
 
 
@@ -78,6 +85,28 @@ public class GameController {
 
         return mav;
     }
+    
+    
+    @GetMapping("game/save")
+    public ModelAndView Record() {
+
+    	
+        GameModel gameModel =this.partieEnCours.getGameModel(); //on récupère l'état actuel du jeu représenté par partieEnCours
+        
+        gameRepository.save(new GameModel(1,"Jean","Paul","Paul","Jean"));
+    	
+    	ModelAndView mav =new ModelAndView("game");
+        mav.addObject("game",gameModel);
+
+
+
+        return mav;
+
+        
+    }
+    
+    
+    
 
 
 }

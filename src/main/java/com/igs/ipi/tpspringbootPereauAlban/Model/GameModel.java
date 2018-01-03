@@ -5,12 +5,12 @@ import javax.persistence.*;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-@Table
+@Table(name="puissance4")
 public class GameModel {
 
 
     @Id
-    @GeneratedValue(strategy = AUTO)
+    //@GeneratedValue(strategy = AUTO)
     @Column
     private long id;
 
@@ -41,7 +41,17 @@ public class GameModel {
     }
 
 
-
+   public GameModel (Integer i,String joueur1, String joueur2, String joueurActuel,String gagnant) {
+	   
+	   this.id=i;
+	   this.nom1=joueur1;
+	   this.nom1=joueur2;
+	   this.joueurActuel=joueurActuel;
+	   this.gagnant=gagnant;
+	   
+	   
+   }
+    
     public GameModel() { //Le tableau tabJeu est créé en même temps que l'instance de GameModel
         for (int i=0 ; i<tabJeu.length ;i++) {
             for (int j = 0; j < tabJeu[i].length; j++) {
