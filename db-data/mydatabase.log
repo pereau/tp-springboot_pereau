@@ -1,0 +1,16 @@
+/*C3*/SET SCHEMA PUBLIC
+/*drop table puissance4;*/\u000d\u000acreate table if not exists \u000d\u000a\u0009puissance4 ( id int primary key  ,joueur1 varchar(45),joueur2 varchar(45),joueurActuel varchar(45),gagnant varchar(45),partie varchar(45) array [41])
+DELETE FROM PUISSANCE4 WHERE ID=1
+DELETE FROM PUISSANCE4 WHERE ID=2
+DELETE FROM PUISSANCE4 WHERE ID=3
+DELETE FROM PUISSANCE4 WHERE ID=4
+COMMIT
+INSERT INTO PUISSANCE4 VALUES(1,'Jean','Pierre','','', ARRAY['Jean','Jean','Pierre','Jean'])
+COMMIT
+INSERT INTO PUISSANCE4 VALUES(2,'Paul','Jacques','','',NULL)
+COMMIT
+INSERT INTO PUISSANCE4 VALUES(3,'Chang','Robert','','Chang',NULL)
+COMMIT
+INSERT INTO PUISSANCE4 VALUES(4,'George','Layla','Layla','',NULL)
+COMMIT
+DISCONNECT

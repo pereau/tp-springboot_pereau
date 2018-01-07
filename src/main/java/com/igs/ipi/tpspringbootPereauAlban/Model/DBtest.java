@@ -1,5 +1,6 @@
 package com.igs.ipi.tpspringbootPereauAlban.Model;
 import java.io.File;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,23 +61,33 @@ public class DbTest {
 	        
 	        List<GameModel> puissance4 = new ArrayList<>();
 	        while(rs.next()){
-	        	puissance4.add(new GameModel(
-	        		
+	        	//Array part = rs.getArray("partie");
+	        	//Array[] partie= new Array[41];
+	           // partie = (Array[])part.getArray();
+	        	puissance4.add(new GameModel(    		   
 	        			rs.getString(1), 
 	        			rs.getString(2), 
 	        			rs.getString(3),
 	        			rs.getString(4)
+	        			//partie
+	        		
 	        		)
     			);
 	        }
 			
 	        for(GameModel gameModel : puissance4) {
-	        	System.out.println(gameModel);
+	        	System.out.println("boucle affichage....");
+	        	System.out.println(gameModel.getNom1());
+	        	System.out.println(gameModel.getNom2());
+	        	System.out.println(gameModel.getJoueurActuel());
+	        	System.out.println(gameModel.getGagnant());
+	        	
 	        }
 	        
 		} catch (SQLException e) {
 			throw e;
 		} finally {
+		
 			con.close();
 		}
 	}

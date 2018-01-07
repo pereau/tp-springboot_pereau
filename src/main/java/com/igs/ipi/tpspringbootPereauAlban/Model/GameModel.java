@@ -49,12 +49,13 @@ public class GameModel {
     }
 
 
-   public GameModel (String joueur1, String joueur2, String joueurActuel,String gagnant) {
+   public GameModel (String joueur1, String joueur2, String joueurActuel,String gagnant) {//,Array[] partie) {
 	   
 	   this.nom1=joueur1;
 	   this.nom1=joueur2;
 	   this.joueurActuel=joueurActuel;
 	   this.gagnant=gagnant;
+	   this.partie=partie;
 	   
 	   
    }
@@ -69,7 +70,9 @@ public class GameModel {
     }
 
 
-    public void tourSuivant() {
+    
+
+	public void tourSuivant() {
 
 
         if (this.joueurActuel.equals(this.getNom1())){
@@ -329,6 +332,28 @@ public class GameModel {
         this.suite=nbJetonsConsecutifs;
 
     }
+    
+    
+    public GameModel sauvegarde(GameModel gameModel) {
+    	int i;
+    	int j;
+    	for (int k=0;k<42;k++) {
+    		i=k/6;
+    		j=k%6;
+    		
+    		this.tabJeu[i][j]="";
+    	}
+    	
+    	
+    	return gameModel;
+    }
+    
+    
+    public GameModel restaurePartie(GameModel gameModel) {
+    	
+    	
+    	return gameModel;
+    }
 
 
     public String getNom1() {
@@ -362,4 +387,14 @@ public class GameModel {
     public void setJoueurActuel(String joueurActuel) {
         this.joueurActuel = joueurActuel;
     }
+
+	public Array[] getPartie() {
+		return partie;
+	}
+
+	public void setPartie(Array[] partie) {
+		this.partie = partie;
+	}
+    
+    
 }

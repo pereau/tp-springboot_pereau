@@ -108,8 +108,10 @@ public class GameController {
         
         
         //gameRepository.save(new GameModel("Jean","Paul","Pierre","Jean"));
-    	Integer i=1;
-        GameModel gm = gameRepository.findById(i);
+    	//Integer i=1;
+        //GameModel gm = gameRepository.findById(i);
+        
+        
         
         
     	ModelAndView mav =new ModelAndView("game");
