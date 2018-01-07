@@ -4,13 +4,15 @@ import javax.persistence.*;
 
 import static javax.persistence.GenerationType.AUTO;
 
+import java.sql.Array;
+
 @Entity
 @Table(name="puissance4")
 public class GameModel {
 
 
     @Id
-    //@GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = AUTO)
     @Column
     private long id;
 
@@ -24,6 +26,9 @@ public class GameModel {
     @Column(length = 50, nullable = false, unique = false)
     private String gagnant="aucun";
     private int suite=0;
+    
+   @Column(nullable = false, unique = false)
+    private Array[] partie = new Array[41];
 
 
 
@@ -35,15 +40,17 @@ public class GameModel {
 
     private String[][] tabJeu;
 
+    //piste : 6 attributs colonne et à mapper avec 6 propriétés colonne et ligne
+   // puis les mettre en correspondance avec tabJeu.
+    
     {
         tabJeu = new String[HAUTEUR][LARGEUR];
 
     }
 
 
-   public GameModel (Integer i,String joueur1, String joueur2, String joueurActuel,String gagnant) {
+   public GameModel (String joueur1, String joueur2, String joueurActuel,String gagnant) {
 	   
-	   this.id=i;
 	   this.nom1=joueur1;
 	   this.nom1=joueur2;
 	   this.joueurActuel=joueurActuel;

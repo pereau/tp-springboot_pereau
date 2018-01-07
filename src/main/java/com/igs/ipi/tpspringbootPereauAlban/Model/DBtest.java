@@ -12,7 +12,7 @@ import org.apache.commons.io.FileUtils;
 
 
 
-public class DbExample {
+public class DbTest {
 
     static Connection con; 
     
@@ -26,7 +26,7 @@ public class DbExample {
 	public static void main(String[] args) throws Exception {
 	    
 		String createTable = readToString("sql/puissance4.sql");
-		//String populate = readToString("sql/populate.sql");
+		String populate = readToString("sql/populate.sql");
 		
 		System.out.println("Attempting to create contacts DB ... ");
 		System.out.println(createTable);
@@ -49,9 +49,9 @@ public class DbExample {
 			con.createStatement()
 					.executeUpdate(createTable);
 			
-			// add contacts
-			//con.createStatement()
-			//		.executeUpdate(populate);
+			// add 
+			con.createStatement()
+					.executeUpdate(populate);
 			
 			// select everything
 			PreparedStatement pst = con.prepareStatement("select * from puissance4");
@@ -61,7 +61,7 @@ public class DbExample {
 	        List<GameModel> puissance4 = new ArrayList<>();
 	        while(rs.next()){
 	        	puissance4.add(new GameModel(
-	        			rs.getInt(1),
+	        		
 	        			rs.getString(1), 
 	        			rs.getString(2), 
 	        			rs.getString(3),

@@ -5,6 +5,9 @@ import com.igs.ipi.tpspringbootPereauAlban.Repository.GameRepository;
 import com.igs.ipi.tpspringbootPereauAlban.Service.GameService;
 import com.igs.ipi.tpspringbootPereauAlban.Service.PartieEnCours;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -89,12 +92,26 @@ public class GameController {
     
     @GetMapping("game/save")
     public ModelAndView Record() {
-
+       
     	
         GameModel gameModel =this.partieEnCours.getGameModel(); //on récupère l'état actuel du jeu représenté par partieEnCours
         
-        gameRepository.save(new GameModel(1,"Jean","Paul","Paul","Jean"));
-    	
+        Connection con = initConnection();
+        String query="select * from GameModel";
+        try {
+			con.createStatement().executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+        
+        
+        //gameRepository.save(new GameModel("Jean","Paul","Pierre","Jean"));
+    	Integer i=1;
+        GameModel gm = gameRepository.findById(i);
+        
+        
     	ModelAndView mav =new ModelAndView("game");
         mav.addObject("game",gameModel);
 
@@ -106,6 +123,21 @@ public class GameController {
     }
     
     
+    public      Connection initConnection(){
+    	        String url = "jdbc:hsqldb:file:db-data/mydatabase";
+    	        String user = "SA";
+    	        String pwd = "";
+    	
+    	        java.sql.Connection connexion = null;
+    	
+    	     try {
+    	           connexion = java.sql.DriverManager.getConnection(url, user, pwd);
+    	        } catch ( java.sql.SQLException e ) {
+    	            //Problème de connexion à la base !
+    	           // print(e.getMessage());
+    	       }
+    	       return connexion;
+    	    }
     
 
 

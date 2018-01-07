@@ -7,4 +7,6 @@ import com.igs.ipi.tpspringbootPereauAlban.Model.GameModel;
 
 public interface GameRepository extends CrudRepository <GameModel,Integer>  {
 
+	GameModel findById(Integer id);
+	GameModel findByGagnant(String gagnant);
 }
