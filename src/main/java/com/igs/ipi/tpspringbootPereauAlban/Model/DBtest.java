@@ -13,7 +13,7 @@ import org.apache.commons.io.FileUtils;
 
 
 
-public class DbTest {
+public class DBTest {
 
     static Connection con; 
     
